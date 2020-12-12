@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+ 
+<html lang="fr">
+	<head>
+		<?php include('head_and_footer/head.php'); ?>
+		<script type="module" src="admin_table.js"></script>
+	</head>
+
+	<body>
+		<?php include('head_and_footer/header.php') ?>
+
+		<main>
+			<h1><i class="fas fa-cogs"></i>Panneau d'administration</h1>
+			<a href="create_article.php">Ajouter un article</a>
+			
+			<table id="listOfArticles">
+				<thead>
+					<tr>
+						<td>Titre</td>
+				        <td>Article</td>
+				        <td>Auteur</td>
+				        <td>Catégorie</td>
+				        <td>Image</td>
+				        <td>Modifier</td>
+				        <td>Supprimer</td>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($articles as $article) : ?>
+						<tr>
+							<td><?= $article['title'] ?></td>
+				            <td><?= $article['content'] ?></td>
+				            <td><?= $article['author'] ?></td>
+				            <td><?= $article['category'] ?></td>
+				            <td><img src="<?= $article['image'] ?>" alt="<?= $article['legend'] ?>"/></td>
+				            <td><a href="edit_article.php?id=<?= $article['id'] ?>" id="editArticle"><i class="fas fa-edit"></i></a></td>
+				            <td><a href="delete_article.php?id=<?= $article['id'] ?>" id="deleteArticle"><i class="far fa-trash-alt"></i></a></td>
+			            </tr>
+			         <?php endforeach ?>
+				</tbody>
+			</table>
+		<div id="manageRight">
+				<p> Gestion des droits</p>
+				
+				<form method="POST" action="manage_rights.php" id="manageRights">
+					<label for="users">Utilisateur:</label>
+        				<select name="user" id="users"/>
+		        			<?php foreach ($users as $user) : ?>
+		        				<option value="<?= $user['login']; ?>"><?= $user['login']; ?></option>
+	        				<?php endforeach ?>
+        				</select>
+					
+					<label for="rights">Changer les droits:</label>
+        			<select name="right" id="rights"/>
+	        			<?php foreach ($rights as $right) : ?>
+	        				<option value="<?= $right['rights']; ?>"><?= $right['rights']; ?></option>
+        				<?php endforeach ?>
+        			</select>
+        			<input type="submit" value="Valider" id="submit"/>
+				</form>
+			</div>
+			
+			<table id="listOfUsers">
+				<thead>
+					<tr>
+						<td>Nom</td>
+						<td>Login</td>
+				        <td>Droits associés</td>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($users as $user) : ?>
+						<tr>
+							<td><?= $user['name'] ?></td>
+							<td><?= $user['login'] ?></td>
+				            <td><?= $user['rights'] ?></td>
+			            </tr>
+			         <?php endforeach ?>
+				</tbody>
+			</table>
+		</main>
+		<?php include('head_and_footer/footer.php'); ?>
+	</body>
+</html>

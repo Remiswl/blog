@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	<head>
+		<?php include('head_and_footer/head.php'); ?>
+		<script type="module" src="card.js"></script>
+	</head>
+
+	<body>
+		<?php include('head_and_footer/header.php') ?>
+		<main>
+			<h1><i class="fas fa-home"></i>Accueil</h1>
+			<div class="article">
+				<?php foreach($articles as $article) : ?>		
+					<a href="article.php?id=<?= $article['id'] ?>"><i class="far fa-hand-point-right"></i><?= $article['title'] ?></a>
+					<p id="extract"><?= substr($article['content'], 0, 49) ?>[...]</p>
+					<p>Rédigé par <?= $article['author'] ?> le <?= $article['publication_date'] ?></p>
+	            <?php endforeach ?>
+			</div>
+		</main>
+		<?php include('head_and_footer/footer.php'); ?>
+	</body>
+</html>

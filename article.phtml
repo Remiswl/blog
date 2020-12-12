@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	<head>
+		<?php include('head_and_footer/head.php'); ?>
+		
+	</head>
+
+	<body>
+		<?php include('head_and_footer/header.php') ?>
+
+		<main>
+			<h1><i class="far fa-file-alt"></i>Article</h1>
+			
+			<div id="detailedArticle">
+			<!-- Afichage des détails de l'article -->
+				<?php foreach($articles as $article) : ?>
+					<?php if($article['id'] == $articleId['id']) : ?>
+	                	<h2 id="title"><?= $article['title'] ?></h2>
+	                	<p id="content"><?= $article['content'] ?></p>
+	                	<img src="<?= $article['image'] ?>" alt="<?= $article['legend'] ?>"/>
+	                	<p>Rédigé par <?= $article['author'] ?> le <?= $article['publication_date'] ?></p>
+	                <?php endif ?>
+				<?php endforeach ?>
+			
+				<!-- Compteur de likes -->
+				<?php foreach($articles as $article) : ?>
+					<?php if($article['id'] == $articleId['id']) : ?>
+					
+						<form method="POST" action="treat_likes.php?id=<?= $articleId['id'] ?>" class="countLikes">
+							
+							<button type="submit" name='like' value="1"><i class="far fa-thumbs-up" id="like"></i></button>
+							<span id="likes"><?= $article['uplike'] ?></span>
+						</form>
+						
+						<form method="POST" action="treat_dislikes.php?id=<?= $articleId['id'] ?>" class="countLikes">	
+							<button type="submit" name='dislike'><i class="far fa-thumbs-up" id="dislike"></i></button>
+							<span id="dislikes"><?= $article['downlike'] ?></span>
+						</form>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+			
+			<div id="comments"><!-- Affichage des commentaires -->
+				<h3>Commentaires</h3>
+				<?php foreach($comments as $comment) : ?>
+					<?php if($comment['article_id'] == $articleId['id']) : ?>
+						<p>"<?= $comment['content']; ?>"</p>
+						<p>De:<?= $comment['nickname']; ?></p>
+					<?php endif ?>
+				<?php endforeach ?>
+			</div>
+			
+			<div id="writeComments"><!-- Ecrire des commentaires -->
+			    <form method="POST" action="treat_comments.php?id=<?= $articleId['id'] ?>">
+        		<fieldset>
+        			<legend><i class="far fa-sticky-note"></i>Nouveau commentaire </legend>
+        			<div>
+        				<label for="pseudo">Pseudo:</label><input type="text" name="pseudo" id="pseudo" size="50"/>
+        			</div>
+        			<div>
+        				<label for="comment">Commentaire:</label><input type="text" name="comment" id="comment"/>
+        			</div>
+        			
+                    <input type="submit" value="Ajouter" id="submit"/>
+                    <button id="cancel"><a href="article.php?id=<?= $articleId['id'] ?>">Annuler</a></button>
+        		</fieldset>
+    		</form>
+			</div>
+		</main>
+		
+		<?php include('head_and_footer/footer.php'); ?>
+	</body>
+</html>

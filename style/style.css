@@ -1,0 +1,331 @@
+body {
+  background-color:rgb(235, 235, 235);
+  font-family:monospace;
+}
+
+.fas, .far {
+  padding-right:10px;
+}
+
+/* HEADER */
+header {
+  border-bottom: 3px rgb(1, 162, 166) solid;
+  background-color:rgb(47, 41, 51);
+}
+
+header a {
+  color:rgb(3, 162, 151);
+  text-decoration:none;
+}
+
+header #linkToHome {
+  display:block;
+  text-align:center;
+  margin:auto;
+  padding:30px;
+  font-size:2em;
+}
+
+header #linkToHome:hover {
+  color:rgb(189, 242, 113);
+}
+
+header nav {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  margin:auto;
+}
+
+header > nav > a {
+  padding:0px 10px 10px 10px;
+}
+
+/* MAIN */
+main {
+  width:90%;
+  margin:auto;
+}
+
+h1 {
+  color:rgb(3, 162, 151);
+  font-size:1.5em;
+}
+
+main a {
+  color:rgb(3, 162, 151);
+  text-decoration:none;
+}
+
+  /* Page d'accueil */
+.article {
+  margin:30px 0px 0px 10px;
+}
+
+  /* Ajout d'un nouvel article */
+fieldset {
+  padding:20px;
+  border: 0.5px solid rgb(3, 162, 151);
+  border-radius:10px;
+}
+
+legend {
+  color:rgb(3, 162, 151);
+}
+
+fieldset ul {
+  padding-left:0;
+}
+
+fieldset label {
+  display:inline-block;
+  vertical-align:top;
+  width: 60px;
+  margin-right:20px;
+}
+
+fieldset li {
+  display:inline-block;
+  width:50%;
+  list-style-type:none;
+}
+
+fieldset #upload label {
+  width:100%;
+  margin-top:20px;
+}
+
+fieldset #upload input {
+  width:100%;
+}
+
+fieldset #button {
+  text-align:center;
+  margin:auto;
+}
+
+#submit, #cancel {
+  width:100px;
+  padding:5px;
+  border-radius:5px;
+}
+
+#submit {
+  background-color:green;
+  color:white;
+}
+
+#cancel {
+  background-color:red;
+}
+
+#cancel > a {
+  color:white;
+  text-decoration:none;
+}
+
+  /* Ajout d'auteurs et de catégories */
+#addAuthor form, #addCategory form {
+  width:90%;
+  text-align:left;
+  margin-top:20px;
+}
+
+#addAuthor p, #addAuthor label  {
+  display:block;
+}
+
+  /* Affichage d'un article */
+#detailedArticle {
+  margin-bottom:10px;
+  padding-bottom:20px;
+}
+
+#comments {
+  margin-bottom:30px;
+  border-bottom: 2px black solid;
+}
+
+#writeComments {
+  padding-top:20px;
+  border-top: 2px black solid;
+}
+
+#writeComments form {
+  width:90%;
+}
+
+#detailedArticle > img {
+  width:200px;
+  text-align:center;
+  margin:auto;
+  border:1px black solid;
+}
+
+tbody img {
+  width:60px;
+  text-align:center;
+  margin:auto;
+}
+
+#like {
+  color:green;
+}
+
+#dislike {
+  transform: rotate(180deg);
+  padding: 0px 0px 0px 10px;
+  color:red;
+}
+
+.countLikes {
+  text-align:left;
+  margin:0px 0px 10px 0px;
+}
+
+.countLikes > button {
+  padding:0;
+  border:none;
+  background-color:transparent;
+}
+
+  /*Affichage de la table d'admin */
+#tableArea {
+    margin-top:20px;
+}
+
+#listOfArticles, #listOfUsers {
+  max-width:90%;
+  text-align:center;
+  margin:auto;
+  border-collapse: collapse;
+}
+
+#listOfArticles td, #listOfUsers td {
+  min-width:100px;
+  padding:5px;
+  border:1px black solid;
+}
+
+#listOfArticles thead, #listOfUsers thead {
+  color:rgb(3, 162, 151);
+  font-weight: bold;
+}
+
+#listOfArticles .fas, #listOfArticles .far {
+  padding:0;
+  color:black;
+}
+
+  /* Formulaire d'enregistrement */
+#createAccount {
+  width:90%;
+  text-align:center;
+  margin:auto;
+  margin-top:30px;
+  margin-bottom:30px;
+  padding-top:10px;
+  padding-bottom:10px;
+  border:1px solid black;
+  border-radius:10px;
+}
+
+#createAccount p {
+  font-size:1.5em;
+}
+
+#createAccount input {
+  display:block;
+  width:90%;
+  margin:auto;
+  margin-top:30px;
+  margin-bottom:30px;
+  padding-bottom:10px;
+  border:none;
+  border-bottom:1px grey solid;
+  background-color:transparent;
+}
+
+#createAccount #submit {
+  background-color:green;
+  padding-bottom:5px;
+  width:40%;
+}
+  
+.center {
+  text-align:center;
+  margin:auto;
+  margin-top:30px;
+}
+
+.g-recaptcha {
+  text-align:center;
+  margin:auto;
+}
+
+#manageRights {
+  margin-left:50px;
+}
+
+#manageRight {
+  margin-top:30px;
+}
+
+#info input, #info .fas {
+  display:inline-block;
+}
+
+#info > .fas {
+  color:blue;
+  margin-left:20px;
+}
+
+/* FOOTER */
+footer {
+  width:90%;
+  margin:auto;
+  margin-top:50px;
+}
+
+footer p {
+  font-size:0.8em;  
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (min-device-width:480px) {
+  header nav {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin:auto;
+  }
+
+.article {
+    margin:30px 0px 0px 50px;
+  }
+  
+  #writeComments form {
+    width:90%;
+    margin:auto;
+  }
+  
+  fieldset input, fieldset select {
+    width:70%;
+  }
+}
+
+@media screen and (min-device-width:960px) {
+  #createAccount {
+    width:30%;
+  }
+  
+  #addAuthor p, #addAuthor label  {
+    display:inline-block;
+  }
+  
+  form {
+    width:40%;
+    margin:auto;
+  }
+}

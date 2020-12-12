@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	<head>
+		<?php include('head_and_footer/head.php'); ?>
+	</head>
+
+	<body>
+		<?php include('head_and_footer/header.php') ?>
+
+		<main>
+			<h1><i class="fas fa-pencil-alt"></i>Modifier un article</h1>
+			
+			<form method="POST" action="changed_article.php?id=<?= $idToModify ?>" enctype=multipart/form-data>
+        		<fieldset>
+        			<legend><i class="far fa-sticky-note"></i>Nouvel article </legend>
+        			
+        			<?php foreach ($allData as $data) : ?>
+		        		<ul>
+        					<label for="title">Titre:</label>
+        					<li><input type="text" name="title" id="title"value="<?= $data['title']; ?>"/></li>
+        				</ul>
+        				<ul>
+        					<label for="article">Article:</label>
+        					<li><textarea type="text" name="article" id="article" cols="70" rows="20"><?= $data['content']; ?></textarea></li>
+        				</ul>
+	        		<?php endforeach ?>
+	        		
+	        		<ul>
+	        			<label for="authors">Auteur:</label>
+	        			<li>
+	        				<select name="author" id="authors"/>
+			        			<?php foreach ($allData as $data) : ?>
+			        				<option value="<?= $data['author_id']; ?>" selected><?= $data['author_name']; ?> (auteur actif)</option>
+			        			<?php endforeach ?>
+			        			
+		        				<?php foreach ($authorsList as $data) : ?>
+		        					 <option value="<?= $data['id']; ?>"><?= $data['author']; ?></option>
+		        				<?php endforeach ?>
+		        			</select>
+	        			</li>
+	            	</ul>
+        			<ul>	
+	            		<label for="categories">Catégorie:</label>
+	            		<li>
+		        			<select name="category" id="categories"/>
+				        		<?php foreach ($allData as $data) : ?>
+			        				<option value="<?= $data['category_id']; ?>" selected><?= $data['category_name']; ?> (catégorie active)</option>
+			        			<?php endforeach ?>
+			        			
+				        		<?php foreach ($categoriesList as $data) : ?>
+		        					 <option value="<?= $data['id']; ?>"><?= $data['name']; ?></option>
+		        				<?php endforeach ?>
+		        			</select>
+		        		</li>
+                    </ul>
+                    
+                    <!-- Upload d'un fichier -->
+                    <ul id="upload">
+                    	<label>Ajouter une image (max. 1MB; formats acceptés: .jpg, .jpeg, .git, .png) :</label>
+                    	<li><input type="hidden" name="MAX_FILE_SIZE" value="1048576"/></li>
+                    	<?php foreach ($allData as $data) : ?>
+                    		<li><input type="file" name="img" value="<?= $data['image'] ?>"/></li>
+                    	<?php endforeach ?>
+                    </ul>
+					<div id="button">
+                    	<input type="submit" value="Enregistrer" id="submit"/>
+                    	<button id="cancel"><a href="admin.php">Annuler</a></button>
+                    </div>
+        		</fieldset>
+    		</form>
+    		
+    		<div id="addAuthor">
+				<form method="POST" action="add_author.php">
+					<p>Ajouter un nouvel auteur:</p>
+    				<label id="newAuthorFirstName">Prénom:</label><input type="text" name="newAuthorFirstName" id="newAuthorFirstName" size="20"/>
+    				<label id="newAuthorLastName">Nom:</label><input type="text" name="newAuthorLastName" id="newAuthorLastName" size="20"/>
+                	<input type="submit" value="Ajouter" id="submit"/>
+	    		</form>
+			</div>
+			
+			<div id="addCategory">
+				<form method="POST" action="add_category.php">
+    				<label id="newCategory">Ajouter une nouvelle catégorie:</label><input type="text" name="newCategory" id="newCategory" size="20"/>
+                	<input type="submit" value="Ajouter" id="submit"/>
+	    		</form>
+			</div>
+		</main>
+		
+		<?php include('head_and_footer/footer.php'); ?>
+	</body>
+</html>
